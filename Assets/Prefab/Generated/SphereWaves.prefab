@@ -126,10 +126,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectToScale: {fileID: 1083832273012418, guid: c7caeedb395d6f343b15f22e034b4ee8,
     type: 2}
-  fromScale: 20
-  toScale: 0
-  speedOfTransition: 3
-  countOfWaves: 4
+  fromScale: 0
+  toScale: 1
+  scaleDirection: 1
+  speedOfTransition: 0.2
+  countOfWaves: 1
 --- !u!135 &135444634017902260
 SphereCollider:
   m_ObjectHideFlags: 1

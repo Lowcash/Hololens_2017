@@ -104,6 +104,8 @@ Material:
     - _IntersectPower: 0.01
     - _LightIntensity: 0.4
     - _LightUV: 0
+    - _LineScale: 0.1
+    - _LinesPerMeter: 4
     - _Metallic: 0
     - _Mode: 0
     - _NearPlaneFadeDistance: 0.1
@@ -115,7 +117,7 @@ Material:
     - _ReflectionPower: 0.5
     - _RimPower: 3
     - _RimStrength: 1.2
-    - _RimValue: 0.755
+    - _RimValue: 0.902
     - _Roughness: 0.5
     - _Shininess: 0.2
     - _SmoothnessTextureChannel: 0
