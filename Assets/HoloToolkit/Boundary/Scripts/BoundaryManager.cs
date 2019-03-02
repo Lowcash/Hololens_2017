@@ -45,7 +45,7 @@ namespace HoloToolkit.Unity.Boundary
 
         // Testing in the editor found that this moved the floor out of the way enough, and it is only
         // used in the case where a headset isn't attached. Otherwise, the floor is positioned like normal.
-        private readonly Vector3 floorPositionInEditor = new Vector3(0f, -3f, 0f);
+        private readonly Vector3 floorPositionInEditor = new Vector3(0f, -0.5f, 0f);
 
         [SerializeField]
         private bool renderFloor = true;
@@ -138,15 +138,15 @@ namespace HoloToolkit.Unity.Boundary
             {
                 floorQuadInstance = Instantiate(FloorQuad);
 
-                if (!XRDevice.isPresent)
-                {
-                    // So the floor quad does not occlude in editor testing, draw it lower.
-                    floorQuadInstance.transform.position = floorPositionInEditor;
-                }
-                else
-                {
-                    floorQuadInstance.transform.position = Vector3.zero;
-                }
+                //if (!XRDevice.isPresent)
+                //{
+                //    // So the floor quad does not occlude in editor testing, draw it lower.
+                //    floorQuadInstance.transform.position = floorPositionInEditor;
+                //}
+                //else
+                //{
+                //    floorQuadInstance.transform.position = Vector3.zero;
+                //}
 
                 SetFloorRendering();
             }

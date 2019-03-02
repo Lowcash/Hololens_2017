@@ -6,7 +6,7 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Bloom
+  m_Name: ForceField
   m_Shader: {fileID: 4800000, guid: 94e3bb0247185f842a5153fe0cd6ef74, type: 3}
   m_ShaderKeywords: _USEMAINTEX_ON _USEOCCLUSIONRIM_ON _USEWIREFRAME_ON
   m_LightmapFlags: 4
@@ -92,8 +92,8 @@ Material:
     - _Cull: 2
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
-    - _DistortStrength: 0.093
-    - _DistortTimeFactor: 0.067
+    - _DistortStrength: 0.688
+    - _DistortTimeFactor: 0.125
     - _DstBlend: 0
     - _EmissionStrength: 0.5
     - _EmissionUV: 0
@@ -101,7 +101,7 @@ Material:
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
-    - _IntersectPower: 0.12
+    - _IntersectPower: 0.01
     - _LightIntensity: 0.4
     - _LightUV: 0
     - _LineScale: 0.1
@@ -116,7 +116,7 @@ Material:
     - _Radius: 5.63
     - _ReflectionPower: 0.5
     - _RimPower: 3
-    - _RimStrength: 1.28
+    - _RimStrength: 2.18
     - _RimValue: 0.902
     - _Roughness: 0.5
     - _Shininess: 0.2
@@ -129,6 +129,7 @@ Material:
     - _StencilOp: 0
     - _StencilReadMask: 255
     - _StencilWriteMask: 255
+    - _Transparency: 1
     - _UVSec: 0
     - _UseBumpMap: 0
     - _UseColor: 0

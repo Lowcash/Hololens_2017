@@ -19,7 +19,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4326156951490510}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: RenderWrapper
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -37,7 +37,7 @@ GameObject:
   - component: {fileID: 33688482956130206}
   - component: {fileID: 23799671677912900}
   - component: {fileID: 95169662177423486}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: ArrowRender
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -59,7 +59,7 @@ GameObject:
   - component: {fileID: 114609238099498028}
   - component: {fileID: 114986200281492172}
   - component: {fileID: 114696884803314870}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Arrow
   m_TagString: Tracking
   m_Icon: {fileID: 0}

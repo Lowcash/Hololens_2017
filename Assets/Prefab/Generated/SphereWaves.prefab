@@ -38,7 +38,7 @@ GameObject:
   - component: {fileID: 33488629530687486}
   - component: {fileID: 135444634017902260}
   - component: {fileID: 23233422991368040}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Sphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -128,9 +128,10 @@ MonoBehaviour:
     type: 2}
   fromScale: 0
   toScale: 1
-  scaleDirection: 1
+  scaleDifferenceToFullTransparency: 0.5
+  scaleDirection: 0
   speedOfTransition: 0.2
-  countOfWaves: 1
+  countOfWaves: 3
 --- !u!135 &135444634017902260
 SphereCollider:
   m_ObjectHideFlags: 1
