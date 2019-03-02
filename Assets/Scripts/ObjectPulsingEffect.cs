@@ -7,6 +7,7 @@ public class ObjectPulsingEffect : MonoBehaviour {
 
     [Header("Pulse object")]
     public GameObject objectToScale;
+    public GameObject objectsStencil;
 
     [Header("Scale settings")]
     public float fromScale = 0.0f;
@@ -29,9 +30,11 @@ public class ObjectPulsingEffect : MonoBehaviour {
 
     private List<float> _actualScales = new List<float>();
 
+    private List<GameObject> _scaleStencils = new List<GameObject>();
     private List<GameObject> _scaleObjects = new List<GameObject>();
 
-    private List<ForceFieldShaderManager> _shaderManagers = new List<ForceFieldShaderManager>();
+    private List<ShaderAdditionalEffectManager> _objectsShaderManagers = new List<ShaderAdditionalEffectManager>();
+    private List<ShaderAdditionalEffectManager> _stencilsShaderManagers = new List<ShaderAdditionalEffectManager>();
 
     private void Start()
     {
@@ -51,7 +54,8 @@ public class ObjectPulsingEffect : MonoBehaviour {
         RecalculateCameraDistance();
 
         UpdateScale(scaleDirection);
-        SetWaveTransparency(scaleDirection);
+        SetWaveTransparency(_objectsShaderManagers, scaleDirection);
+        SetWaveTransparency(_stencilsShaderManagers, scaleDirection);
     }
 
     private void RecalculateCameraDistance()
@@ -79,21 +83,24 @@ public class ObjectPulsingEffect : MonoBehaviour {
                     break;
             }
 
-            _scaleObjects[i].transform.localScale = _defaultScale * _actualScales[i] * _cameraDistanceScale;
+            Vector3 scale = _defaultScale * _actualScales[i] * _cameraDistanceScale; ;
+
+            _scaleObjects[i].transform.localScale = scale;
+            _scaleStencils[i].transform.localScale = scale;
         }
     }
 
-    private void SetWaveTransparency(ScaleDirection direction)
+    private void SetWaveTransparency(List<ShaderAdditionalEffectManager> objectsShaderManagers, ScaleDirection direction)
     {
         for (int i = 0; i < countOfWaves; i++)
         {
             if (_actualScales[i] < fromScale + scaleDifferenceToFullTransparency)
             {
-                _shaderManagers[i].SetTransparency(GetInterpolatedValueFromRange(fromScale, fromScale + scaleDifferenceToFullTransparency, _actualScales[i]));
+                objectsShaderManagers[i].SetTransparency(GetInterpolatedValueFromRange(fromScale, fromScale + scaleDifferenceToFullTransparency, _actualScales[i]));
             }
             if (_actualScales[i] > toScale - scaleDifferenceToFullTransparency)
             {
-                _shaderManagers[i].SetTransparency(GetInterpolatedValueFromRange(toScale, toScale - scaleDifferenceToFullTransparency, _actualScales[i]));
+                objectsShaderManagers[i].SetTransparency(GetInterpolatedValueFromRange(toScale, toScale - scaleDifferenceToFullTransparency, _actualScales[i]));
             }
         }
     }
@@ -121,18 +128,26 @@ public class ObjectPulsingEffect : MonoBehaviour {
             var generatedObject = Instantiate(objectToScale, transform);
             generatedObject.transform.localScale *= scale;
 
+            var generatedStencil = Instantiate(objectsStencil, transform);
+            generatedObject.transform.localScale *= scale;
+
             _scaleObjects.Add(generatedObject);
+            _scaleStencils.Add(generatedStencil);
             _actualScales.Add(scale);
-            _shaderManagers.Add(generatedObject.GetComponent<ForceFieldShaderManager>());
+            _objectsShaderManagers.Add(generatedObject.GetComponent<ShaderAdditionalEffectManager>());
+            _stencilsShaderManagers.Add(generatedStencil.GetComponent<ShaderAdditionalEffectManager>());
         }
     }
 
     private void DestroyGeneratedObjects()
     {
         _scaleObjects.ForEach(o => GameObject.Destroy(o));
+        _scaleStencils.ForEach(o => GameObject.Destroy(o));
 
         _scaleObjects.Clear();
+        _scaleStencils.Clear();
         _actualScales.Clear();
-        _shaderManagers.Clear();
+        _objectsShaderManagers.Clear();
+        _stencilsShaderManagers.Clear();
     }
 }

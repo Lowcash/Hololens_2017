@@ -126,6 +126,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectToScale: {fileID: 1083832273012418, guid: c7caeedb395d6f343b15f22e034b4ee8,
     type: 2}
+  objectsStencil: {fileID: 1210353989966660, guid: edb8b7b1734d5d74cb573bb655b77a44,
+    type: 2}
   fromScale: 0
   toScale: 1
   scaleDifferenceToFullTransparency: 0.5

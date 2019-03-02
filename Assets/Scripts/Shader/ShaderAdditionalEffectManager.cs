@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ForceFieldShaderManager : MonoBehaviour {
+public class ShaderAdditionalEffectManager : MonoBehaviour {
     private Renderer _renderer;
 
-    public Shader forceFieldShader;
+    public Shader shaderToModify;
 
     private void Awake()
     {
@@ -14,7 +14,7 @@ public class ForceFieldShaderManager : MonoBehaviour {
 
     public void SetTransparency(float transparency)
     {
-        if (forceFieldShader.name.Contains("ForceField"))
+        if (_renderer.material.HasProperty("_Transparency"))
         {
             _renderer.material.SetFloat("_Transparency", transparency);
         }
