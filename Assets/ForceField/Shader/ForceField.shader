@@ -67,6 +67,7 @@ float _RimStrength;
 float _IntersectPower;
 
 sampler2D _CameraDepthTexture;
+sampler2D _LastCameraDepthTexture;
 
 v2f vert(appdata v)
 {
@@ -95,7 +96,7 @@ fixed4 frag(v2f i) : SV_Target
 {
 	//获取已有的深度信息,此时的深度图里没有力场的信息
 	//判断相交
-	float sceneZ = LinearEyeDepth(SAMPLE_DEPTH_TEXTURE_PROJ(_CameraDepthTexture, UNITY_PROJ_COORD(i.screenPos)));
+	float sceneZ = LinearEyeDepth(SAMPLE_DEPTH_TEXTURE_PROJ(_LastCameraDepthTexture, UNITY_PROJ_COORD(i.screenPos)));
 	float partZ = i.screenPos.z;
 
 	float diff = sceneZ - partZ;

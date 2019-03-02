@@ -44,22 +44,30 @@ public class ObjectPulsingEffect : MonoBehaviour {
         }
     }
 
-    //private void Update()
-    //{
-    //    var direction = scaleDirection == ScaleDirection.FORWARD ? 1 : -1;
+    private void Update()
+    {
+        var direction = scaleDirection == ScaleDirection.FORWARD ? 1 : -1;
 
-    //    for (int i = 0; i < countOfWaves; i++)
-    //    {
-    //        _actualScales[i] += direction * (Time.deltaTime * speedOfTransition);
+        for (int i = 0; i < countOfWaves; i++)
+        {
+            _actualScales[i] += direction * (Time.deltaTime * speedOfTransition);
 
-    //        if (_actualScales[i] < fromScale)
-    //        {
-    //            _actualScales[i] = toScale;
-    //        }
+            switch (scaleDirection)
+            {
+                case ScaleDirection.BACKWARD:
+                    _actualScales[i] = _actualScales[i] < fromScale ? toScale : _actualScales[i];
 
-    //        Vector3 objectScale = _defaultScale * _actualScales[i];
+                    break;
 
-    //        _scaleObjects[i].transform.localScale = objectScale;
-    //    }
-    //}
+                case ScaleDirection.FORWARD:
+                    _actualScales[i] = _actualScales[i] > toScale ? fromScale : _actualScales[i];
+
+                    break;
+            }
+
+            Vector3 objectScale = _defaultScale * _actualScales[i];
+
+            _scaleObjects[i].transform.localScale = objectScale;
+        }
+    }
 }
