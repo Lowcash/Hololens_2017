@@ -14,9 +14,13 @@ public class ShaderAdditionalEffectManager : MonoBehaviour {
 
     public void SetTransparency(float transparency)
     {
-        if (_renderer.material.HasProperty("_Transparency"))
+        if (_renderer.material.HasProperty("_Color"))
         {
-            _renderer.material.SetFloat("_Transparency", transparency);
+            Color color = _renderer.material.GetColor("_Color");
+
+            color.a = transparency;
+
+            _renderer.material.SetColor("_Color", color);
         }
         else
         {

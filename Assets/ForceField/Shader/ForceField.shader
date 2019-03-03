@@ -8,8 +8,6 @@
 		_DistortTimeFactor("DistortTimeFactor", Range(0,1)) = 0.2
 		_RimStrength("RimStrength",Range(0, 10)) = 2
 		_IntersectPower("IntersectPower", Range(0, 3)) = 2
-
-		_Transparency("Transparency", Range(0, 1)) = 1
 	}
 
 	SubShader
@@ -63,7 +61,6 @@
 			float _DistortTimeFactor;
 			float _RimStrength;
 			float _IntersectPower;
-			fixed _Transparency;
 
 			sampler2D _CameraDepthTexture;
 
@@ -108,7 +105,7 @@
 				fixed4 textureColor = tex2Dproj(_GrabTempTex, i.grabPos);
 			
 				float4 color = _Color * glow + textureColor;
-				color.a *= _Transparency;
+				color.a *= _Color.a;
 
 				return color;
 			}

@@ -34,7 +34,7 @@ public class ObjectPulsingEffect : MonoBehaviour {
     private List<GameObject> _scaleObjects = new List<GameObject>();
 
     private List<ShaderAdditionalEffectManager> _objectsShaderManagers = new List<ShaderAdditionalEffectManager>();
-    private List<ShaderAdditionalEffectManager> _stencilsShaderManagers = new List<ShaderAdditionalEffectManager>();
+    private List<ShaderAdditionalEffectManager> _stencilShaderManagers = new List<ShaderAdditionalEffectManager>();
 
     private void Start()
     {
@@ -54,8 +54,7 @@ public class ObjectPulsingEffect : MonoBehaviour {
         RecalculateCameraDistance();
 
         UpdateScale(scaleDirection);
-        SetWaveTransparency(_objectsShaderManagers, scaleDirection);
-        SetWaveTransparency(_stencilsShaderManagers, scaleDirection);
+        SetWaveTransparency(scaleDirection);
     }
 
     private void RecalculateCameraDistance()
@@ -83,24 +82,28 @@ public class ObjectPulsingEffect : MonoBehaviour {
                     break;
             }
 
-            Vector3 scale = _defaultScale * _actualScales[i] * _cameraDistanceScale; ;
+            Vector3 scale = _defaultScale * _actualScales[i] * _cameraDistanceScale;
 
             _scaleObjects[i].transform.localScale = scale;
             _scaleStencils[i].transform.localScale = scale;
         }
     }
 
-    private void SetWaveTransparency(List<ShaderAdditionalEffectManager> objectsShaderManagers, ScaleDirection direction)
+    private void SetWaveTransparency(ScaleDirection direction)
     {
         for (int i = 0; i < countOfWaves; i++)
         {
             if (_actualScales[i] < fromScale + scaleDifferenceToFullTransparency)
             {
-                objectsShaderManagers[i].SetTransparency(GetInterpolatedValueFromRange(fromScale, fromScale + scaleDifferenceToFullTransparency, _actualScales[i]));
+                _objectsShaderManagers[i].SetTransparency(GetInterpolatedValueFromRange(fromScale, fromScale + scaleDifferenceToFullTransparency, _actualScales[i]));
+
+                //_stencilShaderManagers[i].SetTransparency(1 - GetInterpolatedValueFromRange(fromScale, fromScale + scaleDifferenceToFullTransparency, _actualScales[i]));
             }
             if (_actualScales[i] > toScale - scaleDifferenceToFullTransparency)
             {
-                objectsShaderManagers[i].SetTransparency(GetInterpolatedValueFromRange(toScale, toScale - scaleDifferenceToFullTransparency, _actualScales[i]));
+                _objectsShaderManagers[i].SetTransparency(GetInterpolatedValueFromRange(toScale, toScale - scaleDifferenceToFullTransparency, _actualScales[i]));
+
+                //_stencilShaderManagers[i].SetTransparency(1 - GetInterpolatedValueFromRange(toScale, toScale - scaleDifferenceToFullTransparency, _actualScales[i]));
             }
         }
     }
@@ -135,7 +138,7 @@ public class ObjectPulsingEffect : MonoBehaviour {
             _scaleStencils.Add(generatedStencil);
             _actualScales.Add(scale);
             _objectsShaderManagers.Add(generatedObject.GetComponent<ShaderAdditionalEffectManager>());
-            _stencilsShaderManagers.Add(generatedStencil.GetComponent<ShaderAdditionalEffectManager>());
+            _stencilShaderManagers.Add(generatedStencil.GetComponent<ShaderAdditionalEffectManager>());
         }
     }
 
@@ -148,6 +151,6 @@ public class ObjectPulsingEffect : MonoBehaviour {
         _scaleStencils.Clear();
         _actualScales.Clear();
         _objectsShaderManagers.Clear();
-        _stencilsShaderManagers.Clear();
+        _stencilShaderManagers.Clear();
     }
 }

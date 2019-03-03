@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4041852763362786}
   - component: {fileID: 33691579869831072}
   - component: {fileID: 23776799397776668}
-  - component: {fileID: 114434618794039048}
+  - component: {fileID: 114256954225900954}
   m_Layer: 1
   m_Name: ForceFieldStencil
   m_TagString: Untagged
@@ -83,7 +83,7 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1210353989966660}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &114434618794039048
+--- !u!114 &114256954225900954
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -94,4 +94,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c9f834be81d8a54db9a23d8a8399403, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shaderToModify: {fileID: 4800000, guid: 94e3bb0247185f842a5153fe0cd6ef74, type: 3}
+  shaderToModify: {fileID: 4800000, guid: 44b758484f4bc344bbc0dcdbe41083d6, type: 3}
