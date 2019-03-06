@@ -1503,13 +1503,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: deaf3541e0eb2d84c8fb5ff73ae5cf56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 1264458524}
+  player: {fileID: 580197143}
   findObject: {fileID: 1066219351197606, guid: edd3ef650e2288a49a87a3808477060e, type: 2}
   navigations:
   - {fileID: 1922153850142318, guid: 8f40ffb2478157e49862f35da50809d5, type: 2}
   - {fileID: 1433776708298032, guid: 67f40e818e447754fb8bc55bd58532f1, type: 2}
   findObjectParent: {fileID: 218985181}
-  navigationObjectParent: {fileID: 1264458524}
+  navigationObjectParent: {fileID: 580197143}
   findObjectGenerateDistanceFromPlayer: {x: 0, y: 0, z: 3}
   navigationObjectOffsetFromPlayer: {x: 0, y: -0.2, z: 2}
 --- !u!1 &456696428
@@ -3881,7 +3881,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1189270370
 Transform:
   m_ObjectHideFlags: 0
